@@ -1,0 +1,20 @@
+var TickTock = React.createClass({
+  mixins: [SetIntervalMixin], // Use the mixin
+  getInitialState: function() {
+    return {seconds: 0};
+  },
+  componentDidMount: function() {
+     // Call a method on the mixin
+    this.setInterval(this.tick, 1000);
+  },
+  tick: function() {
+    this.setState({seconds: this.state.seconds + 1});
+  },
+  render: function() {
+    return (
+      <p>
+        {this.state.seconds} seconds.
+      </p>
+    );
+  }
+});
