@@ -32,7 +32,6 @@ const images = {
   reactBG3: require("../assets/react_cool_bg.jpg"),
   reactcomponents: require("../assets/thinking-in-react-components.png"),
   reactmock: require("../assets/thinking-in-react-mock.png"),
-  stateChange: require("../assets/state_change.jpg"),
   virtualDOM: require("../assets/virtualdom.jpg"),
   virtualDOMExample: require("../assets/virtualdom-example.jpg"),
   airbnb: require("../assets/logos/airbnb.png"),
@@ -149,7 +148,7 @@ export default class Presentation extends React.Component {
             <Image src={images.reactmock.replace("/", "")} margin="10px" height="400px"/>
             <Appear><Image src={images.reactcomponents.replace("/", "")} margin="10px" height="400px"/></Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="modular & reusable">
             <Heading caps fit>What is a component?</Heading>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="can also use ES6 syntax">
@@ -185,9 +184,6 @@ export default class Presentation extends React.Component {
               <ul>
                 <li>passed in from parent</li>
                 <li>this.props read-only</li>
-                <li>can be defaulted & validated</li>
-                <li>getDefaultProps</li>
-                <li>propTypes</li>
               </ul>
             }>
             <Heading caps>Props</Heading>
@@ -195,7 +191,13 @@ export default class Presentation extends React.Component {
             <Text textColor="white"><strong>Why was the prop mad?</strong></Text>
             <Appear><Text textColor="white"><strong>Because it was touched</strong></Text></Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
+              <ul>
+                <li>can be defaulted & validated</li>
+                <li>getDefaultProps</li>
+                <li>propTypes</li>
+              </ul>
+            }>
             <Heading caps>Props example</Heading>
             <CodePane
               lang="jsx"
@@ -210,20 +212,22 @@ export default class Presentation extends React.Component {
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
               <ul>
                 <li>created within a component</li>
-                <li>getInitialState</li>
-                <li>this.state to read</li>
-                <li>this.setState() to update</li>
                 <li>state should be considered private</li>
               </ul>
             }>
             <Heading caps>State</Heading>
             <Appear>
-              <Text textSize="50pt" bgColor="red" textColor="white" padding="50px">
+              <Text textSize="50pt" bgColor="#800000" textColor="white" padding="50px">
                 For Internal Use Only
               </Text>
             </Appear>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
+              <ul>
+                <li>getInitialState</li>
+                <li>this.state to read</li>
+              </ul>
+            }>
             <Heading caps>State example</Heading>
             <CodePane
               lang="jsx"
@@ -232,7 +236,11 @@ export default class Presentation extends React.Component {
               textSize="18px"
             />
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes={
+              <ul>
+                <li>this.setState() to update</li>
+              </ul>
+            }>
             <Heading caps>setState Example</Heading>
             <Layout>
               <Fill>
@@ -253,11 +261,16 @@ export default class Presentation extends React.Component {
           <Slide transition={["zoom", "fade"]} bgImage={images.virtualDOM.replace("/", "")} bgDarken={0.50}>
             <Heading caps fit>Virtual DOM</Heading>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="black">
+          <Slide transition={["zoom", "fade"]} bgColor="black" notes={
+              <ul>
+                <li>Re-render when data is dirty (ie: setState)</li>
+                <li>Does this using virtual DOM to generate a real DOM patch</li>
+              </ul>
+            }>
             <Heading caps fit>Virtual DOM example</Heading>
             <Image src={images.virtualDOMExample.replace("/", "")} margin="10px" height="400px"/>
           </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="componentWillMount - before the initial render occurs, if you call setState within this method, render() will see the updated state and will be executed only once">
             <Heading caps>Lifecycle (init)</Heading>
             <Layout>
               <Appear>
